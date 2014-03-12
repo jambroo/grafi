@@ -2,17 +2,43 @@ import java.io.File;
 
 public class LS {
 	public static void main(String[] args) {
-		String pathStr = "/home/jamie/Downloads/";
-		LSRun ls = new LSRun(pathStr);
+		int offset;
+		int limit;
+		String pathStr;
+
+		try {
+			pathStr = args[0];
+			File f = new File(pathStr);
+			f.isDirectory();
+		} catch (Exception e) {
+			throw e;
+		}
+
+		try {
+			offset = Integer.parseInt(args[1]);
+			limit = Integer.parseInt(args[2]);
+		} catch (Exception e) {
+			throw e;
+		}
+
+		LSRun ls = new LSRun(pathStr, offset, limit);
 		ls.run();
 	}
 }
 
 class LSRun {
 	private File pathFile;
+	private int offset;
+	private int limit;
+	private int count;
+	private int outputCount;
 
-	public LSRun(String path) {
+	public LSRun(String path, int offset, int limit) {
+		this.count = 0;
+		this.outputCount = 0;
 		this.pathFile = new File(path);
+		this.offset = offset;
+		this.limit = limit;
 	}
 
 	public void run() {
@@ -24,17 +50,24 @@ class LSRun {
 	}
 	
 	private void printFileInfo(File file, int depth) {
-		for (int i=0; i<depth; i++) {
-			System.out.print("\t");
+		if (this.count >= this.offset) {
+			for (int i=0; i<depth; i++) {
+				System.out.print("\t");
+			}
+			System.out.print(file.getName());
+			if (file.isDirectory()) {
+				System.out.print(" :");
+			}
+			System.out.println();
+			this.outputCount++;
 		}
-		System.out.print(file.getName());
-		if (file.isDirectory()) {
-			System.out.print(" :");
-		}
-		System.out.println();
+		this.count++;
 	}
 
 	private File[] lsFiles(File file, String parentDirs, int depth) {
+		if (this.outputCount >= this.limit) {
+			return null;
+		}
 		if (file.isFile()) {
 			this.printFileInfo(file, depth);
 			
@@ -44,6 +77,10 @@ class LSRun {
 		File[] files = file.listFiles();
 
 		for (File f : files) {
+			if (this.outputCount >= this.limit) {
+				return null;
+			}
+
 			this.printFileInfo(f, depth);		
 			if (f.isDirectory()) {		
 				this.lsFiles(f, f.getAbsolutePath(), depth+1);
