@@ -1,41 +1,56 @@
 import java.io.File;
 
 public class LS {
-
 	public static void main(String[] args) {
-		String pathStr = "/home/james/Downloads/";
-		File path = new File(pathStr);
+		String pathStr = "/home/jamie/Downloads/";
+		LSRun ls = new LSRun(pathStr);
+		ls.run();
+	}
+}
 
-		this.lsFiles(new File(pathStr));
+class LSRun {
+	private File pathFile;
+
+	public LSRun(String path) {
+		this.pathFile = new File(path);
 	}
 
-	private File[] lsFiles(File path) {
-		return this.lsFiles(path, "", 0);
+	public void run() {
+		this.lsFiles(this.pathFile);
 	}
 
-	private File[] lsFiles(File path, String parentDirs, int depth) {
-		if (path.isFile()) {
-			// do tabs and output str
+	private void lsFiles(File file) {
+		this.lsFiles(file, "", 0);
+	}
+	
+	private void printFileInfo(File file, int depth) {
+		for (int i=0; i<depth; i++) {
+			System.out.print("\t");
+		}
+		System.out.print(file.getName());
+		if (file.isDirectory()) {
+			System.out.print(" :");
+		}
+		System.out.println();
+	}
 
-
-			File[] files = new File[1];
-			file[0] = path;
-
-			return files;
+	private File[] lsFiles(File file, String parentDirs, int depth) {
+		if (file.isFile()) {
+			this.printFileInfo(file, depth);
+			
+			return null;
 		}
 		
-		File[] files = path.listFiles();
+		File[] files = file.listFiles();
 
 		for (File f : files) {
-			if (f.isFile()) {
-				for (int i=0; i<depth; i++) {
-					System.out.print("\t");
-				}
-				System.out.println(f.getName());
-			} else if (f.isDirectory()) {
+			this.printFileInfo(f, depth);		
+			if (f.isDirectory()) {		
 				this.lsFiles(f, f.getAbsolutePath(), depth+1);
 			}
 		}
+
+		return null;
 	}
 
 }
