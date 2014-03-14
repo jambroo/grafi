@@ -57,9 +57,10 @@ class LSRun {
 			System.out.print(file.getName());
 			if (file.isDirectory()) {
 				System.out.print(" :");
+			} else {
+				this.outputCount++;
 			}
 			System.out.println();
-			this.outputCount++;
 		}
 		this.count++;
 	}
