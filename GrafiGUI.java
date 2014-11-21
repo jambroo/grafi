@@ -23,14 +23,12 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 		}
             });
 
-	    addMouseListener(new GrafiMouse());
+            addMouseListener(new MouseAdapter() { 
+                public void mousePressed(MouseEvent me) { 
+                    System.out.println(me); 
+                } 
+            });
 
-	    /*
-		String path = "../photos/";
-		PhotoFiles pf = new PhotoFiles(new File(path), 0, 10);
-		this.files = pf.get();
-	    */
-		
 	    this.dimensions = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	    resize(this.dimensions);
 
@@ -60,7 +58,7 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 
                     g.drawImage(thumb.getImage(), thumb.getX(), thumb.getY(), thumb.getWidth(), thumb.getHeight(), this);
                 } catch (IOException e) {
-                    //e.printStackTrace();
+                    e.printStackTrace();
                 }
             }
 
