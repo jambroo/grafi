@@ -1,3 +1,5 @@
+package main.java.com.jambroo.grafi;
+
 import magick.ImageInfo;
 import magick.MagickImage;
 

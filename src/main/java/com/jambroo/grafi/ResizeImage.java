@@ -1,3 +1,5 @@
+package main.java.com.jambroo.grafi;
+
 import magick.*;
 
 import java.awt.Dimension;

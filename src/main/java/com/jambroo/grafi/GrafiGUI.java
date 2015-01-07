@@ -1,3 +1,5 @@
+package main.java.com.jambroo.grafi;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
@@ -9,11 +11,16 @@ TODO:
 */
 
 public class GrafiGUI extends Frame implements WindowListener, ActionListener {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1150950659955313271L;
 	private Dimension dimensions;
 	private PhotoThumb[] thumbs;
 	private PhotoFile[] files;
 	private File path;
 
+	@SuppressWarnings("deprecation")
 	public GrafiGUI () {
             setLayout(new FlowLayout());
 
@@ -39,6 +46,7 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 	    setVisible(true);
 	}
 
+	@SuppressWarnings("unused")
 	private void outputMemUsage() {
             long maxMemory = Runtime.getRuntime().maxMemory();
             long freeMemory = Runtime.getRuntime().freeMemory();
@@ -46,10 +54,10 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 	    System.out.println((maxMemory-freeMemory));
 	}
 
-        private PhotoThumb[] loadPhotos(int offset, int limit, int x, int y) {
-            PhotoFiles pf = new PhotoFiles(this.path, offset, limit, this.dimensions);
-            return pf.getThumbs(x, y);
-        }
+    private PhotoThumb[] loadPhotos(int offset, int limit, int x, int y) {
+        PhotoFiles pf = new PhotoFiles(this.path, offset, limit, this.dimensions);
+        return pf.getThumbs(x, y);
+    }
 
 	public void paint(Graphics g) {
 	    for (int i=0; i<this.thumbs.length; i++) {

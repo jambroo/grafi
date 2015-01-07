@@ -1,3 +1,5 @@
+package main.java.com.jambroo.grafi;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.*;

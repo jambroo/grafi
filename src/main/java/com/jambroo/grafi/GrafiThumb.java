@@ -1,3 +1,5 @@
+package main.java.com.jambroo.grafi;
+
 import java.awt.image.BufferedImage;
 
 class GrafiThumb {
