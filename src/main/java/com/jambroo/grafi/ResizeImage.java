@@ -1,13 +1,13 @@
 package main.java.com.jambroo.grafi;
 
-import magick.*;
+//import magick.*;
 
 import java.awt.Dimension;
 import java.awt.Rectangle;
 
 public class ResizeImage {
     public static void main(String[] args) throws Exception {
-        int thumbWidth = 200;
+        /*int thumbWidth = 200;
         int thumbHeight = 150;
 
         String filename;
@@ -55,6 +55,6 @@ public class ResizeImage {
         MagickImage miThumb = miSmall.cropImage(miSmallArea);
         miThumb.setFileName(filename + "_thumb.jpg");
         ImageInfo iiThumb = new ImageInfo(filename + "_thumb.jpg");
-        miThumb.writeImage(iiThumb);
+        miThumb.writeImage(iiThumb);*/
     }
 }

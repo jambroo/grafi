@@ -17,7 +17,7 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 	private static final long serialVersionUID = 1150950659955313271L;
 	private Dimension dimensions;
 	private PhotoThumb[] thumbs;
-	private PhotoFile[] files;
+	//private PhotoFile[] files;
 	private File path;
 
 	@SuppressWarnings("deprecation")
@@ -39,7 +39,7 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 	    this.dimensions = java.awt.Toolkit.getDefaultToolkit().getScreenSize();
 	    resize(this.dimensions);
 
-	    this.path = new File("../photos/");
+	    this.path = new File("/home/jamie/workspace/grafi/test_images");
 	    this.thumbs = this.loadPhotos(0, 10, 0, 0); //pf.getThumbs(0, 0);
 
 	    setTitle("Test Form");
@@ -56,7 +56,10 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 
     private PhotoThumb[] loadPhotos(int offset, int limit, int x, int y) {
         PhotoFiles pf = new PhotoFiles(this.path, offset, limit, this.dimensions);
-        return pf.getThumbs(x, y);
+        
+        System.out.println(pf);
+        return null;
+        //return pf.getThumbs(x, y);
     }
 
 	public void paint(Graphics g) {

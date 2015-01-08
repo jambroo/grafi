@@ -1,7 +1,7 @@
 package main.java.com.jambroo.grafi;
 
-import magick.ImageInfo;
-import magick.MagickImage;
+//import magick.ImageInfo;
+//import magick.MagickImage;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -39,7 +39,7 @@ class PhotoFile {
     }
 
     public PhotoThumb getThumb(int x, int y, int w, int h) throws IOException {
-        try {
+  /*      try {
             ImageInfo ii = new ImageInfo(this.filename);
             MagickImage mi = new MagickImage(ii);
 
@@ -67,7 +67,7 @@ class PhotoFile {
             return new PhotoThumb(miThumb.imageToBlob(iiThumb), x, y, w, h);
         } catch (Exception e) {
         }
-
+*/
         return null;
     }
 
