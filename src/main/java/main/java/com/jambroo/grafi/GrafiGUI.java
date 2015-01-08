@@ -24,10 +24,10 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
 	public GrafiGUI () {
             setLayout(new FlowLayout());
 
-	    addWindowListener(new WindowAdapter(){
-	        public void windowClosing(WindowEvent we) {
-		    System.exit(0);
-		}
+		    addWindowListener(new WindowAdapter(){
+		        public void windowClosing(WindowEvent we) {
+		        	System.exit(0);
+		        }
             });
 
             addMouseListener(new MouseAdapter() { 
@@ -57,16 +57,14 @@ public class GrafiGUI extends Frame implements WindowListener, ActionListener {
     private PhotoThumb[] loadPhotos(int offset, int limit, int x, int y) {
         PhotoFiles pf = new PhotoFiles(this.path, offset, limit, this.dimensions);
         
-        System.out.println(pf);
-        return null;
-        //return pf.getThumbs(x, y);
+        return pf.getThumbs(x, y);
     }
 
 	public void paint(Graphics g) {
-	    for (int i=0; i<this.thumbs.length; i++) {
+		for (int i=0; i<this.thumbs.length; i++) {
                 try {
                     PhotoThumb thumb = this.thumbs[i];
-
+                    
                     g.drawImage(thumb.getImage(), thumb.getX(), thumb.getY(), thumb.getWidth(), thumb.getHeight(), this);
                 } catch (IOException e) {
                     e.printStackTrace();

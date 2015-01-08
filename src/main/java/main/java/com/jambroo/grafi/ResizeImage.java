@@ -2,8 +2,8 @@ package main.java.com.jambroo.grafi;
 
 //import magick.*;
 
-import java.awt.Dimension;
-import java.awt.Rectangle;
+//import java.awt.Dimension;
+//import java.awt.Rectangle;
 
 public class ResizeImage {
     public static void main(String[] args) throws Exception {

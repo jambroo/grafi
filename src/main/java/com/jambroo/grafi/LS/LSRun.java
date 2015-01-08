@@ -1,4 +1,4 @@
-package main.java.com.jambroo.grafi.LS;
+package com.jambroo.grafi.LS;
 
 import java.io.File;
 
